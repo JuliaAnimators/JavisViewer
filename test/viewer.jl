@@ -40,7 +40,14 @@ end
     second_frame = Javis.get_javis_frame(video, actions, curr_frame, layers = [l1])
     @test Reactive.value(r_slide) == 2
 
-    JavisViewer._decrement(video, [r_slide, tbox], actions, frame_dims, canvas, total_frames)
+    JavisViewer._decrement(
+        video,
+        [r_slide, tbox],
+        actions,
+        frame_dims,
+        canvas,
+        total_frames,
+    )
     sleep(0.1)
     curr_frame = Reactive.value(r_slide)
     first_frame = Javis.get_javis_frame(video, actions, curr_frame, layers = [l1])
@@ -48,7 +55,14 @@ end
 
     @test first_frame != second_frame
 
-    JavisViewer._decrement(video, [r_slide, tbox], actions, frame_dims, canvas, total_frames)
+    JavisViewer._decrement(
+        video,
+        [r_slide, tbox],
+        actions,
+        frame_dims,
+        canvas,
+        total_frames,
+    )
     sleep(0.1)
     curr_frame = Reactive.value(r_slide)
     last_frame = Javis.get_javis_frame(video, actions, curr_frame, layers = [l1])
@@ -80,15 +94,15 @@ end
     star_obj = Object(1:100, astar)
     act!(star_obj, Action(morph_to(acirc; do_action = :fill)))
 
-    conf_local = setup_stream(:local, address = "0.0.0.0", port = 8081)
+    conf_local = JavisViewer.setup_stream(:local, address = "0.0.0.0", port = 8081)
     @test conf_local isa JavisViewer.StreamConfig
     @test conf_local.livestreamto == :local
     @test conf_local.protocol == "udp"
     @test conf_local.address == "0.0.0.0"
     @test conf_local.port == 8081
 
-    conf_twitch_err = setup_stream(:twitch)
-    conf_twitch = setup_stream(:twitch, twitch_key = "foo")
+    conf_twitch_err = JavisViewer.setup_stream(:twitch)
+    conf_twitch = JavisViewer.setup_stream(:twitch, twitch_key = "foo")
     @test conf_twitch_err isa JavisViewer.StreamConfig
     @test conf_twitch_err.livestreamto == :twitch
     @test isempty(conf_twitch_err.twitch_key)
@@ -101,7 +115,7 @@ end
     # @test test_local isa Base.ProcessChain
     # @test test_local.processes isa Vector{Base.Process}
 
-    cancel_stream()
+    JavisViewer.cancel_stream()
     @test_throws ProcessFailedException run(
         pipeline(
             `ps aux`,
