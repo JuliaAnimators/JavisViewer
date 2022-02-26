@@ -6,7 +6,7 @@ using GtkReactive
 using Javis
 
 
-export liveviewF
+export liveview
 
 
 """
