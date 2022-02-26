@@ -10,9 +10,9 @@ assignees: ''
 <!--Before Filing a Report-->
 
 <!--1. Did I read the Documentation and/or docstrings?-->
-<!--2. Did I search the JavisNB GitHub to see if this bug has already been reported?-->
+<!--2. Did I search the JavisViewer GitHub to see if this bug has already been reported?-->
 <!--3. Do I have the latest version of Javis installed? -->
-<!--4. Do I have the latest version of JavisNB installed? -->
+<!--4. Do I have the latest version of JavisViewer installed? -->
 
 **Describe the bug**
 
