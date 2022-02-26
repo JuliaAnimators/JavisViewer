@@ -6,10 +6,7 @@ using GtkReactive
 using Javis
 
 
-export liveview
-export setup_stream, cancel_stream
-
-
+export liveviewF
 
 
 """
