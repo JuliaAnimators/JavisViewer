@@ -81,7 +81,8 @@ function _draw_image(
 )
     @guarded draw(canvas) do widget
         # Gets a specific frame from graphic; transposed due to returned matrix
-        frame_mat = transpose(Javis.get_javis_frame(video, objects, frame; layers = video.layers))
+        frame_mat =
+            transpose(Javis.get_javis_frame(video, objects, frame; layers = video.layers))
 
         # Gets the correct Canvas context to draw on
         context = getgc(canvas)
