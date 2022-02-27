@@ -31,7 +31,7 @@ end
         act!(obj, Action(1:20, appear(:fade)))
     end
 
-    liveview(vid; pathname = "")
+    render(vid; pathname = "")
 
     action_list = [back, star_obj]
 
