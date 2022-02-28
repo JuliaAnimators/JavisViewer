@@ -1,9 +1,11 @@
 name = "JavisViewer"
 uuid = "e61f6c88-b8cc-4c5a-97f7-b7cb93a9aa5a"
-authors = ["Jacob Zelko <jacobszelko@gmail.com>"]
+authors = ["Jacob Zelko <jacobszelko@gmail.com>", "Giovanni Puccetti <g.puccetti92@gmail.com>"]
 version = "0.0.0"
 
 [deps]
 Cairo = "159f3aea-2a34-519c-b102-8c37f9878175"
 Gtk = "4c0ca9eb-093a-5379-98c5-f87ac0bbbf44"
 GtkReactive = "27996c0f-39cd-5cc1-a27a-05f136f946b6"
+Javis = "78b212ba-a7f9-42d4-b726-60726080707e"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
