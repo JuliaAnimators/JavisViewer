@@ -4,6 +4,7 @@ using Cairo
 using Gtk
 using GtkReactive
 using Javis
+using Random
 
 
 export liveview
@@ -248,11 +249,48 @@ function _javis_viewer(
     end
 end
 
+
+"""
+    liveview(
+        video::Video;
+        framerate = 30,
+        pathname = "javis_$(randstring(7)).gif",
+        tempdirectory = "",
+        ffmpeg_loglevel = "panic",
+        rescale_factor = 1.0,
+    )
+
+This is the core function of this package and it allows 
+to `render` and animation while also showing it in an 
+interactive liveviewer. 
+
+To use it just replace `Javis.render` with `JavisViewer.liveview` and 
+on top of the rendered animation an interactive liveviewr will show up
+allowing to scroll through the frames one by one.
+
+```julia
+using Javis, JavisViewer
+
+vid = Video(500, 500)
+Background(1:200, (args...)->background("black"))
+o1 = Object(JCircle(Point(100, 0), 30, color="green", action=:fill))
+act!(o1, Action(anim_translate(Point(-200, 0))))
+act!(o1, Action(1:100, anim_translate(Point(0, 200))))
+act!(o1, Action(101:200, anim_translate(Point(0, -200))))
+o2 = Object(JCircle(Point(100, 0), 10, action=:fill, color="red"))
+p = Point(10, 0)
+act!(o2, Action(anim_rotate_around(2π, p)))
+o3 = Object(JCircle(p, 20, color="blue", action=:fill))
+liveview(vid, pathname="javisviewer_example.gif")
+```
+
+To see all its functionalities check the documentation of 
+[Javis.render](https://juliaanimators.github.io/Javis.jl/stable/references/#Javis.render-Tuple{Video}).
+"""
 function liveview(
     video::Video;
     framerate = 30,
     pathname = "javis_$(randstring(7)).gif",
-    liveview = true,
     tempdirectory = "",
     ffmpeg_loglevel = "panic",
     rescale_factor = 1.0,
@@ -264,7 +302,7 @@ function liveview(
         video::Video;
         framerate = framerate,
         pathname = pathname,
-        liveview = liveview,
+        liveview = true,
         streamconfig = nothing,
         tempdirectory = tempdirectory,
         ffmpeg_loglevel = ffmpeg_loglevel,

@@ -1,0 +1,4 @@
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+Javis = "78b212ba-a7f9-42d4-b726-60726080707e"
+JavisViewer = "e61f6c88-b8cc-4c5a-97f7-b7cb93a9aa5a"
